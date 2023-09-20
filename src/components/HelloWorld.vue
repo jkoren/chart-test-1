@@ -46,6 +46,7 @@ export default {
   props: {
     msg: String
   },
+  el: '#appl',
   data: function () {
     return {
       options: {
