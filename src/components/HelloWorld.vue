@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h2>first chart</h2>
+    <div class="center">
+      <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+    </div>
+    <h2>bottom of chart</h2>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,10 +36,32 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueApexCharts from 'vue-apexcharts'
+Vue.use(VueApexCharts)
+Vue.component('apexchart', VueApexCharts)
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  el: '#appl',
+  data: function () {
+    return {
+      options: {
+        chart: {
+          id: 'vuechart-example'
+        },
+        xaxis: {
+          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        }
+      },
+      series: [{
+        name: 'series-1',
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+      }]
+    }
   }
 }
 </script>
@@ -54,5 +81,10 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 </style>
